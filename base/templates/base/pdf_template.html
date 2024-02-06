@@ -1,0 +1,26 @@
+<!-- templates/base/pdf_template.html -->
+{% extends 'base/base_pdf.html' %}
+
+{% block title %}Previous Glucose Readings{% endblock title %}
+
+{% block content %}
+<h1>Previous Glucose Readings</h1>
+
+<h2>Readings Before Eating</h2>
+<ul>
+    {% for reading in readings_before_eating %}
+    <li>{{ reading.date_time }} - {{ reading.reading }} mg/dL (Before Eating)</li>
+    {% empty %}
+    <li>No readings before eating.</li>
+    {% endfor %}
+</ul>
+
+<h2>Readings After Eating</h2>
+<ul>
+    {% for reading in readings_after_eating %}
+    <li>{{ reading.date_time }} - {{ reading.reading }} mg/dL (After Eating)</li>
+    {% empty %}
+    <li>No readings after eating.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

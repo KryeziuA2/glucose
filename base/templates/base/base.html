@@ -1,0 +1,85 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DiabetAAH | {% block title %}My Site{% endblock title %}</title>
+    <!-- Add common CSS, JavaScript links here -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style>
+    #myVideo {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;}
+</style>
+</head>
+<body style="margin: 0;">
+    <div style="background: #11c6f3; color: black; padding: 50px 0; width: 100%;">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <!-- Navigation bar, logo, etc. -->
+                    <div class="nine columns">
+                        <!-- Wrap the title in an anchor tag -->
+                        <a href="{% url 'glucose_reading_list' %}" style="text-decoration: none; color: inherit;">
+                            <span style="font-weight: 900; font-size: 7rem;">DiabetAAH</span>
+                        </a>
+                    </div>
+                    <div class="three columns">
+                        {% if user.is_authenticated %}
+                            <a class="button" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a class="button" href="{% url 'login' %}">Login</a>
+                            <a class="button" href="{% url 'register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+</body>
+</div>
+    </div>
+</div>
+
+
+
+
+
+
+    <main>
+        {% block content %}
+        <!-- This block will be overridden by child templates -->
+        {% endblock content %}
+    </main>
+
+<div style="background: #053b48; color: #11c6f3; margin-top: 150px; padding: 70px 0;">
+    <div class="container">
+    <div class="row" >
+    <footer>
+        <!-- Footer content --><div class="six columns"><span style="font-size: 9rem">DiabetAAH</span><p>DiabetAAH is a mobile solution for diabetes management.
+            DiabetAAH is a mobile solution for diabetes management.
+            DiabetAAH is a mobile solution for diabetes management.</p></div>
+        <div class="three columns">
+           <h3> &nbsp;</h3>
+
+        </div>
+        <div class="three columns">
+            <h3> Contact</h3>
+            <ul>
+                <li>Address</li>
+                <li>Phone</li>
+                <li>Email</li>
+                <li>Social Media</li>
+            </ul>
+        </div>
+    </footer>
+    </div></div>
+</div>
+</body>
+</html>

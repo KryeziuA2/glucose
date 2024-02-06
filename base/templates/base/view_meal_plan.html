@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Personalized Meal Plan{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h2 style="font-size: 28px;font-weight: bold;">Your Personalized Meal Plan</h2>
+
+            {% if glucose_level %}
+    <!-- Display glucose level and meal suggestions -->
+    <p style="font-size: 18px;">Your current glucose level: {{ glucose_level }} mg/dL</p>
+
+    {% if meal_suggestions %}
+    <h3 style="font-size: 28px; color: #333; margin-bottom: 10px; text-align: left;font-weight: bold;">Suggested Meals and Nutrition:</h3>
+        <ul style="font-size: 18px;">
+            <li>Choose complex carbohydrates like whole grains, legumes, and vegetables over refined carbohydrates. Monitor portion sizes to help manage blood sugar levels.</li>
+            <li>Include lean protein sources such as poultry, fish, tofu, and legumes. Limit red meat consumption and opt for healthier protein choices.</li>
+            <li>Choose healthy fats like avocados, nuts, seeds, and olive oil. Limit saturated and trans fats found in fried foods and processed snacks.</li>
+            <li>Incorporate high-fiber foods such as fruits, vegetables, whole grains, and legumes to support digestive health.</li>
+            <li>Space meals throughout the day to prevent large fluctuations in blood sugar levels. Consider the timing of meals in relation to medications.</li>
+            <li>Stay hydrated with water or other low-calorie beverages.</li>
+        </ul>
+        <ul style="font-size: 18px;">
+            {% for suggestion in meal_suggestions %}
+                <li>{{ suggestion }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="font-size: 18px;">No meal suggestions available. Consult with a doctor for a personalized meal plan.</p>
+    {% endif %}
+{% else %}
+    <p style="font-size: 18px;">No recent glucose reading found.</p>
+{% endif %}
+        </div>
+        <div class="col-md-6 text-center">
+            {% if glucose_level %}
+                <!-- Centered and styled image -->
+                <img src="{% static image_path %}" alt="Glucose Level Image" class="img-fluid mt-3" style="max-width: 100%; height: 500px;">
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Button to view previous readings -->
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3 text-center">
+            <a href="{% url 'previous_readings' %}" class="btn btn-primary" style="font-size: 16px;">
+                View Previous Readings
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

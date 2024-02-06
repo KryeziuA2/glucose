@@ -1,0 +1,41 @@
+<!-- templates/login.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+
+{% block content %}
+<div class="container" style="margin-top: 50px; margin-bottom: 50px">
+    <div class="row">
+        <div class="seven columns">
+            <img width="100%" src="https://media.istockphoto.com/id/1316738511/photo/shot-of-an-attractive-young-nurse-sitting-and-bonding-with-her-senior-patient-in-his-kitchen.jpg?s=612x612&w=0&k=20&c=zCS_G38ix7l0GLYzEabDy4K2Mc7ydL_uAHYGKg-xrvA=">
+        </div>
+        <div class="five columns">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button-primary">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+     
+    <!-- Chatbot Button -->
+     <a href="{% url 'chatbot' %}">
+        <button class="button-primary">Chat with the Chatbot</button>
+    </a>
+</div>
+    </div>
+</div>
+
+<video autoplay muted loop id="myVideo">
+  <source src="https://media.istockphoto.com/id/1470567630/video/young-adult-woman-doing-a-glucose-blood-test-at-home.mp4?s=mp4-640x640-is&k=20&c=EnlShUAZE2UE6quhTGzkvG435pH13_oCPCBPTqKQ2cU=" type="video/mp4">
+</video>
+    <style>
+    #myVideo {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;}
+}</style>
+{% endblock content %}

@@ -1,0 +1,47 @@
+<!-- templates/glucose_readings_list.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Glucose Readings{% endblock title %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <h1>Add Glucose Reading</h1>
+
+        <!-- Display Messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Form for adding new reading -->
+        
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="reading" placeholder="Glucose reading"><br>
+            <input type="datetime-local" name="date_time" required><br>
+            <select name="reading_type">
+                <option value="before">Before Eating</option>
+                <option value="after">After Eating</option>
+            </select><br>
+            <button type="submit" class="button-primary">Add reading</button>
+        </form>
+        
+        <hr>
+        <!-- Button to view previous readings -->
+        <a href="{% url 'previous_readings' %}">
+            <button class="button-primary">View Previous Readings</button>
+        </a>
+         <!-- Chatbot Button -->
+         <a href="{% url 'chatbot' %}">
+            <button class="button-primary">Chat with the Chatbot</button>
+        </a>
+    </div>
+</div>
+{% endblock content %}
+

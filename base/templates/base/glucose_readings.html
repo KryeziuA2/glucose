@@ -1,0 +1,28 @@
+<!-- templates/glucose_reading.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Glucose Readings Graph{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <!-- Back Button -->
+      <a href="{% url 'previous_readings' %}" style="text-decoration: none; margin-bottom: 20px;">
+        <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          Back to Readings
+        </button>
+      </a>
+
+      <!-- Graph Content Here -->
+      <h1>Glucose Readings Graph</h1>
+      <img src="{% url 'glucose_graph' %}" alt="Glucose Readings Graph">
+      
+      <!-- Chatbot Button -->
+      <a href="{% url 'chatbot' %}" style="text-decoration: none; margin-top: 20px;">
+        <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          Go to Chatbot
+        </button>
+      </a>
+    </div>
+  </div>
+{% endblock content %}

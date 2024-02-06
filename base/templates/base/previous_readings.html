@@ -1,0 +1,58 @@
+<!-- templates/base/previous_readings.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Previous Glucose Readings{% endblock title %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <h1>Previous Glucose Readings</h1>
+
+        <!-- Buttons to view the graphs -->
+        <a href="{% url 'glucose_graph' 'all' %}" style="float: right; margin-right: 20px; text-decoration: none;">
+            <button class="button-primary" style="...">View All Readings Graph</button>
+        </a>
+        <a href="{% url 'glucose_graph' 'before' %}" style="float: right; margin-right: 20px; text-decoration: none;">
+            <button class="button-primary" style="...">View Readings Before Eating Graph</button>
+        </a>
+        <a href="{% url 'glucose_graph' 'after' %}" style="float: right; margin-right: 20px; text-decoration: none;">
+            <button class="button-primary" style="...">View Readings After Eating Graph</button>
+        </a>
+         
+        <h2>Readings Before Eating</h2>
+        <ul>
+            {% for reading in readings_before_eating %}
+            <li>{{ reading.date_time }} - {{ reading.reading }} mg/dL (Before Eating)</li>
+            {% empty %}
+            <li>No readings before eating.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Readings After Eating</h2>
+        <ul>
+            {% for reading in readings_after_eating %}
+            <li>{{ reading.date_time }} - {{ reading.reading }} mg/dL (After Eating)</li>
+            {% empty %}
+            <li>No readings after eating.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- templates/base/previous_readings.html -->
+<!-- ... existing code ... -->
+
+
+ <!-- Chatbot Button -->
+ <a href="{% url 'chatbot' %}">
+    <button class="button-primary">Chat with the Chatbot</button>
+</a>
+<!--  "Download PDF" button  -->
+<a href="{% url 'previous_readings' %}?download_pdf=1" style="float: right; margin-right: 20px; text-decoration: none;">
+    <button class="button-primary" style="padding: 3px 40px; font-size: 22px; background-color: #4cb2d7; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Download PDF
+    </button>
+</a>
+</a>
+
+</div>
+{% endblock content %}
+    

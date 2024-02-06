@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Reading Recorded{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <br/>
+        <br/>
+        <br/>
+        <p>Your glucose reading has been successfully recorded.</p>
+
+        <p>{{ message }}</p>
+        
+        <!-- Button to view previous readings -->
+        <a href="{% url 'previous_readings' %}">
+            <button style="padding: 10px 20px 45px; margin-bottom: 20px; background-color: #4cb2d7; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                View Previous Readings
+            </button>
+        </a>
+        
+        <!-- Button to view personalized meal plan -->
+        <a href="{% url 'view_meal_plan' %}">
+            <button style="padding: 10px 20px 45px; margin-bottom: 20px; background-color: #4cb2d7; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                View Meal Plan
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}

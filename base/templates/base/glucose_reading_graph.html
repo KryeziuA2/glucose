@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Glucose Reading Graph{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <h1>{{ title }}</h1>
+
+        <!-- Back Button -->
+        <a href="{% url 'previous_readings' %}" style="text-decoration: none;">
+            <button style="margin-bottom: 20px;">Back to Previous Readings</button>
+        </a>
+
+        <!-- Graph Image -->
+        <img src="{{ graph_image_url }}" alt="Glucose Reading Graph" style="max-width: 100%; height: auto;">
+
+        <!-- Navigation Buttons for Different Graph Types -->
+        <div style="margin-top: 20px;">
+            <a href="{% url 'glucose_graph' 'all' %}" class="button">All Readings</a>
+            <a href="{% url 'glucose_graph' 'before' %}" class="button">Before Eating</a>
+            <a href="{% url 'glucose_graph' 'after' %}" class="button">After Eating</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
